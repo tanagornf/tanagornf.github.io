@@ -57,7 +57,6 @@
       nav.classList.remove("is-open");
       navToggle.setAttribute("aria-expanded", "false");
       navToggle.querySelector("[aria-hidden='true']").textContent = "Menu";
-      document.body.classList.remove("nav-open");
     }
 
     if (nav && navToggle) {
@@ -66,7 +65,6 @@
         nav.classList.toggle("is-open", willOpen);
         navToggle.setAttribute("aria-expanded", String(willOpen));
         navToggle.querySelector("[aria-hidden='true']").textContent = willOpen ? "Close" : "Menu";
-        document.body.classList.toggle("nav-open", willOpen);
       });
 
       nav.querySelectorAll("a").forEach(function (link) {
