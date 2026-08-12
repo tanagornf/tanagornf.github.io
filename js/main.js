@@ -73,6 +73,13 @@
         link.addEventListener("click", closeNav);
       });
 
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && nav.classList.contains("is-open")) {
+          closeNav();
+          navToggle.focus();
+        }
+      });
+
       window.addEventListener("resize", function () {
         if (window.innerWidth > 720) closeNav();
       });

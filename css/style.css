@@ -1152,8 +1152,10 @@ h3 {
     right: 0;
     left: 0;
     display: none;
-    height: calc(100dvh - 4.25rem);
-    padding: 1.5rem var(--gutter) calc(1.5rem + env(safe-area-inset-bottom));
+    width: 100%;
+    max-height: calc(100dvh - 4.25rem);
+    padding: 1rem var(--gutter) calc(1.25rem + env(safe-area-inset-bottom));
+    border-bottom: 1px solid var(--line);
     background: var(--bg);
     align-content: start;
     align-items: stretch;
@@ -1192,7 +1194,7 @@ h3 {
   }
 
   .js .primary-nav > a {
-    padding-block: 1rem;
+    padding-block: 0.85rem;
     border-bottom: 1px solid var(--line);
     color: var(--text);
     font-size: 1.35rem;
@@ -1200,7 +1202,7 @@ h3 {
 
   .js .theme-toggle {
     width: max-content;
-    margin-top: 2rem;
+    margin-top: 1.25rem;
   }
 
   .hero {
