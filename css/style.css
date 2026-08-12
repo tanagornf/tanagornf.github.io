@@ -1152,13 +1152,16 @@ h3 {
     right: 0;
     left: 0;
     display: none;
-    height: calc(100svh - 4.25rem);
-    padding: 3rem var(--gutter);
+    height: calc(100dvh - 4.25rem);
+    padding: 1.5rem var(--gutter) calc(1.5rem + env(safe-area-inset-bottom));
     background: var(--bg);
     align-content: start;
     align-items: stretch;
     flex-direction: column;
     gap: 0;
+    justify-content: flex-start;
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   .js .primary-nav.is-open {
@@ -1202,11 +1205,16 @@ h3 {
 
   .hero {
     min-height: auto;
-    padding-top: 6rem;
+    padding-top: 4.25rem;
+  }
+
+  .hero-status {
+    font-size: 0.63rem;
+    letter-spacing: 0.075em;
   }
 
   .hero-inner {
-    padding-bottom: 1.5rem;
+    padding-block: 2.75rem 3.5rem;
   }
 
   .hero-title {
@@ -1219,7 +1227,7 @@ h3 {
   }
 
   .scroll-cue {
-    margin-top: 4rem;
+    display: none;
   }
 
   .section-heading,
