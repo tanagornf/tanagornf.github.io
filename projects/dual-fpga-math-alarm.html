@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A dual-FPGA alarm system designed by Tanagorn Fukuhara using gate-level digital logic and board-to-board signaling.">
+  <meta name="author" content="Tanagorn Fukuhara">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tanagorn.com/projects/dual-fpga-math-alarm.html">
+  <meta property="og:title" content="Dual-FPGA Math Alarm — Tanagorn Fukuhara">
+  <meta property="og:description" content="A two-board digital logic system that stops an alarm only after a correct arithmetic answer.">
+  <link rel="canonical" href="https://tanagorn.com/projects/dual-fpga-math-alarm.html">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/main.js"></script>
+  <title>Dual-FPGA Math Alarm — Tanagorn Fukuhara</title>
+</head>
+<body class="subpage-body">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header" data-header>
+    <div class="shell header-inner">
+      <a class="wordmark" href="../index.html" aria-label="Tanagorn Fukuhara, home">
+        <span class="wordmark-mark" aria-hidden="true">TF</span>
+        <span class="wordmark-name">Tanagorn Fukuhara</span>
+      </a>
+      <nav class="primary-nav" aria-label="Project navigation">
+        <a href="../index.html#projects">All projects</a>
+        <button class="theme-toggle" type="button" aria-label="Switch color theme">
+          <span class="theme-icon" aria-hidden="true">◐</span>
+          <span class="theme-label">Theme</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="subpage" id="main-content">
+    <header class="subpage-hero section-grid">
+      <div class="shell">
+        <p class="eyebrow"><span>Project 01</span> Embedded systems</p>
+        <h1 class="subpage-title">Dual-FPGA Math Alarm</h1>
+        <p class="subpage-lead">A two-board alarm system that can only be stopped by solving an arithmetic question correctly.</p>
+        <ul class="tag-list" aria-label="Project technologies">
+          <li>FPGA</li>
+          <li>Xilinx tools</li>
+          <li>Digital logic</li>
+          <li>Gate-level design</li>
+          <li>Board-to-board signaling</li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="shell content-layout">
+      <aside class="content-nav" aria-label="Case study sections">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#problem">Problem</a></li>
+          <li><a href="#architecture">Architecture</a></li>
+          <li><a href="#implementation">Implementation</a></li>
+          <li><a href="#challenges">Challenge</a></li>
+          <li><a href="#lessons">What I learned</a></li>
+        </ol>
+      </aside>
+
+      <article>
+        <section class="case-study-section" id="problem">
+          <p class="eyebrow"><span>01</span> Problem</p>
+          <h2>Make dismissing the alarm an active task.</h2>
+          <p>The goal was to build an alarm that would not stop from a simple button press. Instead, the user had to solve a basic arithmetic question, turning alarm dismissal into a small interaction that required attention.</p>
+        </section>
+
+        <section class="case-study-section" id="architecture">
+          <p class="eyebrow"><span>02</span> Architecture</p>
+          <h2>Two FPGA boards, one completion signal.</h2>
+          <p>The system split responsibility across two FPGA boards connected through physical I/O pins. One board handled the arithmetic question, showed it across multiple seven-segment displays, and checked the submitted answer. When the answer was correct, it sent a signal to the second board, which controlled and stopped the buzzer alarm.</p>
+          <div class="system-flow" role="img" aria-label="Question and answer FPGA sends a correct-answer signal to the alarm-control FPGA">
+            <div>
+              <span>FPGA A</span>
+              <strong>Question + answer logic</strong>
+            </div>
+            <p aria-hidden="true">Correct answer signal →</p>
+            <div>
+              <span>FPGA B</span>
+              <strong>Alarm control</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-study-section" id="implementation">
+          <p class="eyebrow"><span>03</span> Implementation</p>
+          <h2>Designed directly from logic gates.</h2>
+          <p>Using Xilinx design software, I constructed and programmed the behavior manually from logic gates rather than writing Verilog or VHDL. The design combined arithmetic generation, seven-segment display control, answer checking, and the state needed to keep the alarm active until the correct result was received.</p>
+          <p>The second board drove a buzzer through a resistor-limited circuit. The exact FPGA board models and Xilinx application are no longer recorded.</p>
+        </section>
+
+        <section class="case-study-section" id="challenges">
+          <p class="eyebrow"><span>04</span> Engineering challenge</p>
+          <h2>Coordinate behavior across hardware boundaries.</h2>
+          <p>The important systems problem was not only evaluating the answer, but making two independently programmed FPGA boards behave as one reliable device. The alarm board had to remain active until it received the expected signal from the question board.</p>
+        </section>
+
+        <section class="case-study-section" id="lessons">
+          <p class="eyebrow"><span>05</span> What I learned</p>
+          <h2>Complex behavior begins with simple logic.</h2>
+          <p>This project gave me hands-on experience translating desired system behavior into gates and signals. It also introduced an idea that still matters in software systems: define clear component responsibilities and a precise interface between them.</p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <p>© <span data-year>2026</span> Tanagorn Fukuhara</p>
+      <p>Embedded systems case study</p>
+      <a href="../index.html#projects">Back to projects <span aria-hidden="true">←</span></a>
+    </div>
+  </footer>
+</body>
+</html>
