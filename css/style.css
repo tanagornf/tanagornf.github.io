@@ -978,6 +978,36 @@ h3 {
   color: var(--text-soft);
 }
 
+.project-screenshot-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: 1.25rem;
+  align-items: start;
+  margin-top: 2.5rem;
+}
+
+.project-screenshot {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+}
+
+.project-screenshot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.project-screenshot figcaption {
+  padding: 0.8rem 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--text-faint);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.035em;
+}
+
 .placeholder-block {
   padding: clamp(1.25rem, 3vw, 2rem);
   border: 1px dashed var(--line-strong);
@@ -1288,6 +1318,7 @@ h3 {
   .contact-inner,
   .toolbox,
   .content-layout,
+  .project-screenshot-grid,
   .system-flow {
     grid-template-columns: 1fr;
   }

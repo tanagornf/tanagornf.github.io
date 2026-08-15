@@ -16,7 +16,7 @@
   <meta name="twitter:description" content="A local-first account and usage companion for the Windows ChatGPT desktop app.">
   <meta name="twitter:image" content="https://tanagorn.com/assets/images/roster-companion-icon.png">
   <link rel="canonical" href="https://tanagorn.com/projects/roster-companion.html">
-  <link rel="stylesheet" href="../css/style.css?v=20260816-2">
+  <link rel="stylesheet" href="../css/style.css?v=20260816-3">
   <script src="../js/main.js?v=20260813-1"></script>
   <title>Roster Companion — Tanagorn Fukuhara</title>
 </head>
@@ -84,6 +84,16 @@
           <p class="eyebrow"><span>02</span> Companion design</p>
           <h2>Visually attached, technically separate.</h2>
           <p>Roster Companion runs as its own Windows process and places a compact selector beside the existing selector in the ChatGPT desktop app. It does not inject code into or modify ChatGPT. Instead, event-driven window and accessibility tracking keeps the interface aligned while responding to movement, resizing, menus, settings, occlusion, and light or dark theme changes.</p>
+          <div class="project-screenshot-grid" aria-label="Roster Companion screenshots">
+            <figure class="project-screenshot">
+              <img src="../assets/images/roster-companion-context.png" alt="Roster Companion account selector and dropdown attached to the ChatGPT desktop app" width="559" height="562" loading="lazy" decoding="async">
+              <figcaption>Attached to the ChatGPT desktop app</figcaption>
+            </figure>
+            <figure class="project-screenshot">
+              <img src="../assets/images/roster-companion-dropdown.png" alt="Roster Companion dropdown showing fictional accounts and usage limits" width="428" height="494" loading="lazy" decoding="async">
+              <figcaption>Account status and usage at a glance</figcaption>
+            </figure>
+          </div>
           <div class="system-flow" role="img" aria-label="The ChatGPT desktop app provides window state that Roster Companion uses to position its local account selector">
             <div>
               <span>Host application</span>
