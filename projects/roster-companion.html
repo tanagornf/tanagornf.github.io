@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Roster Companion is a local-first account and usage companion for the Windows ChatGPT desktop app, built by Tanagorn Fukuhara.">
+  <meta name="author" content="Tanagorn Fukuhara">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tanagorn.com/projects/roster-companion.html">
+  <meta property="og:title" content="Roster Companion — Tanagorn Fukuhara">
+  <meta property="og:description" content="A local-first Windows companion for viewing ChatGPT account status, usage limits, and changing accounts explicitly.">
+  <meta property="og:image" content="https://tanagorn.com/assets/images/roster-companion-icon.png">
+  <meta property="og:image:alt" content="Roster Companion application icon">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Roster Companion — Tanagorn Fukuhara">
+  <meta name="twitter:description" content="A local-first account and usage companion for the Windows ChatGPT desktop app.">
+  <meta name="twitter:image" content="https://tanagorn.com/assets/images/roster-companion-icon.png">
+  <link rel="canonical" href="https://tanagorn.com/projects/roster-companion.html">
+  <link rel="stylesheet" href="../css/style.css?v=20260816-2">
+  <script src="../js/main.js?v=20260813-1"></script>
+  <title>Roster Companion — Tanagorn Fukuhara</title>
+</head>
+<body class="subpage-body">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header" data-header>
+    <div class="shell header-inner">
+      <a class="wordmark" href="../index.html" aria-label="Tanagorn Fukuhara, home">
+        <span class="wordmark-mark" aria-hidden="true">TF</span>
+        <span class="wordmark-name">Tanagorn Fukuhara</span>
+      </a>
+      <nav class="primary-nav" aria-label="Project navigation">
+        <a href="../index.html#projects">All projects</a>
+        <button class="theme-toggle" type="button" aria-label="Switch color theme">
+          <span class="theme-icon" aria-hidden="true">◐</span>
+          <span class="theme-label">Theme</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="subpage" id="main-content">
+    <header class="subpage-hero section-grid">
+      <div class="shell">
+        <div class="project-hero-mark">
+          <img src="../assets/images/roster-companion-icon.png" alt="Roster Companion application icon" width="256" height="256">
+        </div>
+        <p class="eyebrow"><span>Project 02</span> Windows desktop software</p>
+        <h1 class="subpage-title">Roster Companion</h1>
+        <p class="subpage-lead">A local-first account and usage companion designed to feel like part of the Windows ChatGPT desktop app.</p>
+        <ul class="tag-list" aria-label="Project technologies">
+          <li>C#</li>
+          <li>.NET 8</li>
+          <li>WPF</li>
+          <li>Win32</li>
+          <li>GitHub Actions</li>
+        </ul>
+        <div class="subpage-actions" aria-label="Project links">
+          <a class="button button-primary" href="https://github.com/tanagornf/roster-companion/releases/tag/v0.1.0" target="_blank" rel="noopener noreferrer">Download v0.1.0 <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="https://github.com/tanagornf/roster-companion" target="_blank" rel="noopener noreferrer">View source <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </header>
+
+    <div class="shell content-layout">
+      <aside class="content-nav" aria-label="Case study sections">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#problem">Problem</a></li>
+          <li><a href="#design">Companion design</a></li>
+          <li><a href="#account-changes">Account changes</a></li>
+          <li><a href="#privacy">Privacy</a></li>
+          <li><a href="#shipping">Shipping</a></li>
+        </ol>
+      </aside>
+
+      <article>
+        <section class="case-study-section" id="problem">
+          <p class="eyebrow"><span>01</span> Problem</p>
+          <h2>Manage multiple accounts without adding another workspace.</h2>
+          <p>People who use more than one ChatGPT account need a quick way to see which account is active, check usage limits, and change accounts. A conventional standalone manager would introduce another window and pull attention away from the app where the work is happening.</p>
+        </section>
+
+        <section class="case-study-section" id="design">
+          <p class="eyebrow"><span>02</span> Companion design</p>
+          <h2>Visually attached, technically separate.</h2>
+          <p>Roster Companion runs as its own Windows process and places a compact selector beside the existing selector in the ChatGPT desktop app. It does not inject code into or modify ChatGPT. Instead, event-driven window and accessibility tracking keeps the interface aligned while responding to movement, resizing, menus, settings, occlusion, and light or dark theme changes.</p>
+          <div class="system-flow" role="img" aria-label="The ChatGPT desktop app provides window state that Roster Companion uses to position its local account selector">
+            <div>
+              <span>Host application</span>
+              <strong>ChatGPT desktop window</strong>
+            </div>
+            <p aria-hidden="true">Window state →</p>
+            <div>
+              <span>Companion process</span>
+              <strong>Account selector + usage</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-study-section" id="account-changes">
+          <p class="eyebrow"><span>03</span> Account changes</p>
+          <h2>Make a sensitive operation explicit and recoverable.</h2>
+          <p>Changing accounts always requires confirmation. Before proceeding, the app checks for running tasks, backs up the current local credentials and session, validates the replacement, and can roll back if the change fails. Only verified ChatGPT package processes are closed and reopened as part of the confirmed switch.</p>
+          <p>New accounts can be enrolled through the official Codex CLI when it is available, with a guarded ChatGPT desktop fallback when it is not.</p>
+        </section>
+
+        <section class="case-study-section" id="privacy">
+          <p class="eyebrow"><span>04</span> Privacy</p>
+          <h2>Keep account data on the user’s machine.</h2>
+          <p>Profiles, credentials, usage data, and backups are stored locally. The app has no telemetry, ads, analytics, or developer-operated background server. Network connections are limited to official OpenAI services needed for sign-in and usage refreshes.</p>
+          <p>Roster Companion is an unofficial tool and is not affiliated with or endorsed by OpenAI.</p>
+        </section>
+
+        <section class="case-study-section" id="shipping">
+          <p class="eyebrow"><span>05</span> Shipping</p>
+          <h2>Package a native Windows utility with repeatable checks.</h2>
+          <p>The first public pre-release ships as a self-contained Windows x64 ZIP. Its delivery pipeline builds the app, runs 41 automated tests, checks dependencies and repository contents, and performs a startup smoke test before packaging a release.</p>
+          <p>Version 0.1.0 is currently unsigned, so Windows SmartScreen may show a warning. Because it tracks a separate desktop app through Windows interfaces, future ChatGPT interface changes may require compatibility updates.</p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <p>© <span data-year>2026</span> Tanagorn Fukuhara</p>
+      <p>Windows companion case study</p>
+      <a href="../index.html#projects">Back to projects <span aria-hidden="true">←</span></a>
+    </div>
+  </footer>
+</body>
+</html>
