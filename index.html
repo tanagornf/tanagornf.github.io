@@ -37,8 +37,16 @@
       type="font/woff2"
       crossorigin
     />
-    <link rel="stylesheet" href="css/style.css?v=20261011-2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="css/style.css?v=20261021-toy2" />
+    <link rel="stylesheet" href="css/play.css?v=20261021-9" />
     <script src="js/main.js?v=20261011-2"></script>
+    <script src="js/play.js?v=20261021-17" defer></script>
     <title>Tanagorn Fukuhara — Software, Systems & Play</title>
   </head>
   <body>
@@ -119,24 +127,31 @@
                       opacity=".45"
                       d="M43 118C69 49 198 50 308 107S443 242 394 282 222 295 127 231 29 155 43 118Z"
                     />
-                    <circle cx="230" cy="184" r="126" fill="var(--art-fill)" />
-                    <ellipse cx="230" cy="184" rx="84" ry="126" />
-                    <ellipse cx="230" cy="184" rx="33" ry="126" />
-                    <ellipse cx="230" cy="184" rx="126" ry="48" />
-                    <ellipse cx="230" cy="184" rx="126" ry="94" />
-                    <path d="M104 184H356M230 58V310" />
                     <path
                       d="M49 307H88M68.5 287.5V326.5M373 58H397M385 46V70"
                       stroke-width="2"
                     />
                   </g>
+                  <g class="orbit-globe" data-globe>
+                    <g stroke="currentColor" stroke-width="1.2">
+                      <circle cx="230" cy="184" r="126" fill="var(--art-fill)" />
+                      <ellipse cx="230" cy="184" rx="84" ry="126" />
+                      <ellipse cx="230" cy="184" rx="33" ry="126" />
+                      <ellipse cx="230" cy="184" rx="126" ry="48" />
+                      <ellipse cx="230" cy="184" rx="126" ry="94" />
+                      <path d="M104 184H356M230 58V310" />
+                    </g>
+                    <path d="m220 174 18-18 17 17-18 18z" fill="var(--art-ink)" />
+                  </g>
                   <circle cx="382" cy="126" r="9" fill="var(--art-ink)" />
                   <circle cx="100" cy="279" r="5" fill="var(--art-ink)" />
-                  <path d="m220 174 18-18 17 17-18 18z" fill="var(--art-ink)" />
                 </svg>
-                <span class="art-label art-label-one">&lt; software /&gt;</span
-                ><span class="art-label art-label-two"
+                <span class="art-label art-label-one" data-sticker
+                  >&lt; software /&gt;</span
+                ><span class="art-label art-label-two" data-sticker
                   >+ a little imagination</span
+                ><span class="art-label art-label-three" data-sticker
+                  >psst. drag us.</span
                 >
                 <div class="art-footer">
                   <span>LOGIC × CURIOSITY</span><span>↗</span>
@@ -185,19 +200,18 @@
             </p>
           </div>
           <article class="secondary-project roster-project reveal">
-            <a
-              class="roster-media"
-              href="projects/roster-companion.html"
-              aria-label="Read the Roster Companion case study"
-            >
-              <span class="roster-media-heading"
+            <div class="roster-media">
+              <a
+                class="roster-media-heading"
+                href="projects/roster-companion.html"
+                aria-label="Read the Roster Companion case study"
                 ><img
                   src="assets/images/roster-companion-icon.png"
                   alt=""
                   width="256"
                   height="256"
                 /><span>ROSTER COMPANION / WINDOWS</span
-                ><span aria-hidden="true">↗</span></span
+                ><span aria-hidden="true">↗</span></a
               >
               <img
                 class="roster-preview"
@@ -207,7 +221,37 @@
                 height="562"
                 loading="lazy"
               />
-            </a>
+              <div class="mini-roster" data-roster hidden>
+                <p class="mini-caption">
+                  Mini version · try it. Accounts are fictional.
+                </p>
+                <div class="rm-panel">
+                  <div class="rm-head">
+                    <span data-roster-email>alex@example.com</span
+                    ><span class="rm-head-icons" aria-hidden="true">⌕ ⚙</span>
+                  </div>
+                  <ul class="rm-list" data-roster-list></ul>
+                  <div class="rm-confirm" data-roster-confirm hidden>
+                    <p data-roster-confirm-text></p>
+                    <ol class="rm-steps" data-roster-steps></ol>
+                    <div class="rm-confirm-actions">
+                      <button type="button" data-roster-cancel>Cancel</button
+                      ><button type="button" class="rm-primary" data-roster-go>
+                        Change account
+                      </button>
+                    </div>
+                  </div>
+                  <div class="rm-foot">
+                    <button type="button" data-roster-use>
+                      Send a prompt
+                    </button>
+                    <span data-roster-status aria-live="polite"
+                      >Usage updated</span
+                    ><button type="button" data-roster-refresh>↻ Refresh</button>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="secondary-copy">
               <p class="eyebrow">01 / Windows desktop software</p>
               <h3>Roster Companion</h3>
@@ -245,11 +289,8 @@
             </div>
           </article>
           <article class="featured-project reveal">
-            <a
-              class="feature-media"
-              href="projects/hack-a-country.html"
-              aria-label="Explore Hack A Country"
-              ><img
+            <div class="feature-media">
+              <img
                 src="assets/images/hack-a-country.jpg"
                 alt="Hack A Country promotional artwork: a hacker’s laptop reaches 99% as a guard approaches."
                 width="1920"
@@ -258,8 +299,61 @@
               /><span class="media-chip"
                 ><span class="status-dot" aria-hidden="true"></span> On
                 Roblox</span
-              ><span class="media-arrow" aria-hidden="true">↗</span></a
-            >
+              ><a
+                class="media-arrow"
+                href="projects/hack-a-country.html"
+                aria-label="Explore Hack A Country"
+                ><span aria-hidden="true">↗</span></a
+              >
+              <div class="hac" data-hac data-state="cover" hidden>
+                <canvas
+                  class="hac-canvas"
+                  data-hac-canvas
+                  tabindex="-1"
+                  role="img"
+                  aria-label="Top-down mini version of Hack A Country: hack the office terminal, then run home before the guard catches you."
+                ></canvas>
+                <p class="hac-banner" data-hac-banner></p>
+                <div class="hac-action">
+                  <button type="button" class="hac-hack" data-hac-hack>
+                    <i data-hac-progress></i><span data-hac-hack-label
+                      >HOLD HACK [E]</span
+                    >
+                  </button>
+                  <div class="hac-bag" data-hac-bag hidden>
+                    <i data-hac-bag-fill></i><span data-hac-bag-label
+                      >BAG 0 / 0</span
+                    >
+                  </div>
+                </div>
+                <div class="hac-panel" data-hac-panel>
+                  <p class="hac-kicker">Hack A Country · mini</p>
+                  <p class="hac-title" data-hac-title>ITALY HEIST</p>
+                  <p class="hac-sub" data-hac-sub>
+                    Sneak up to the Civic Office, hack the terminal, and carry
+                    the DATA home before the guard catches you.
+                  </p>
+                  <div class="hac-buttons">
+                    <button type="button" class="hac-btn hac-green" data-hac-go>
+                      ▶ PLAY
+                    </button
+                    ><a
+                      class="hac-btn hac-gold"
+                      data-hac-roblox
+                      href="https://www.roblox.com/games/99593778538148/Hack-A-Country"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      hidden
+                      >PLAY ON ROBLOX ↗</a
+                    >
+                  </div>
+                  <p class="hac-help" data-hac-help>
+                    Move: WASD / arrows, or hold on the map · Hack: hold E or the
+                    button
+                  </p>
+                </div>
+              </div>
+            </div>
             <div class="feature-copy">
               <p class="eyebrow">02 / Independent game · 2026</p>
               <h3>
@@ -291,12 +385,14 @@
             </div>
           </article>
           <article class="secondary-project reveal">
-            <a
-              class="fpga-art"
-              href="projects/dual-fpga-math-alarm.html"
-              aria-label="Read the Dual-FPGA Math Alarm case study"
-            >
-              <span class="schematic-label">SYSTEM 03 / DIGITAL LOGIC</span>
+            <div class="fpga-art" data-alarm-card data-state="idle">
+              <span class="schematic-label"
+                >SYSTEM 03 / DIGITAL LOGIC<span
+                  class="alarm-state"
+                  data-alarm-status
+                  aria-live="polite"
+                ></span
+              ></span>
               <svg
                 viewBox="0 0 580 260"
                 role="img"
@@ -322,7 +418,10 @@
                 <g stroke="currentColor" fill="none" stroke-width="1.5">
                   <rect x="65" y="56" width="170" height="148" rx="10" />
                   <rect x="345" y="56" width="170" height="148" rx="10" />
-                  <path d="M235 108h42v44h68M235 152h22v-44h88" />
+                  <path
+                    class="alarm-wire"
+                    d="M235 108h42v44h68M235 152h22v-44h88"
+                  />
                   <rect x="100" y="87" width="100" height="86" rx="3" />
                   <rect x="380" y="87" width="100" height="86" rx="3" />
                   <path
@@ -334,17 +433,40 @@
                   text-anchor="middle"
                   font-family="monospace"
                 >
-                  <text x="150" y="123" font-size="20">FPGA A</text>
-                  <text x="150" y="146" font-size="11">QUESTION + ANSWER</text>
-                  <text x="430" y="123" font-size="20">FPGA B</text>
-                  <text x="430" y="146" font-size="11">ALARM CONTROL</text>
+                  <text x="150" y="138" font-size="26" data-alarm-question>
+                    7×8
+                  </text>
+                  <text x="150" y="232" font-size="11">
+                    FPGA A · QUESTION + ANSWER
+                  </text>
+                  <text x="430" y="152" font-size="12" data-alarm-word>
+                    STANDBY
+                  </text>
+                  <text x="430" y="232" font-size="11">
+                    FPGA B · ALARM CONTROL
+                  </text>
                 </g>
-                <circle cx="277" cy="130" r="5" fill="#d54a2c" /></svg
+                <circle class="alarm-led" cx="430" cy="114" r="10" />
+                <circle class="signal-dot" cx="277" cy="130" r="5" /></svg
               ><span class="schematic-footer"
-                >SOLVE → SIGNAL → SILENCE
-                <span aria-hidden="true">↗</span></span
+                ><span class="schematic-flow">SOLVE → SIGNAL → SILENCE</span
+                ><span class="schematic-actions"
+                  ><button
+                    type="button"
+                    class="alarm-ring"
+                    data-alarm-ring
+                    hidden
+                  >
+                    Ring the alarm</button
+                  ><a
+                    class="schematic-link"
+                    href="projects/dual-fpga-math-alarm.html"
+                    aria-label="Read the Dual-FPGA Math Alarm case study"
+                    ><span aria-hidden="true">↗</span></a
+                  ></span
+                ></span
               >
-            </a>
+            </div>
             <div class="secondary-copy">
               <p class="eyebrow">03 / Embedded systems</p>
               <h3>Not your average<br />alarm clock.</h3>
@@ -379,7 +501,8 @@
             >
           </div>
           <ol class="timeline">
-            <li class="timeline-item reveal">
+            <li class="timeline-item reveal is-active">
+              <span class="quest-chip">Active quest</span>
               <div class="timeline-top">
                 <p class="entry-label">Novitech AI Solutions</p>
                 <span class="timeline-date">Jul 2026 — Present</span>
@@ -390,7 +513,8 @@
                 interfaces and access control to serverless backend and AI
                 systems.
               </p>
-              <ul class="experience-highlights">
+              <p class="objectives-label">Objectives completed</p>
+              <ul class="experience-highlights objectives">
                 <li>
                   Built authentication, invitation, account access, and platform
                   administration flows for a multi-tenant product.
@@ -407,6 +531,7 @@
               <span class="timeline-location">Bangkok, Thailand · On-site</span>
             </li>
             <li class="timeline-item reveal">
+              <span class="quest-chip">In progress</span>
               <div class="timeline-top">
                 <p class="entry-label">KMITL</p>
                 <span class="timeline-date">Expected Apr 2027</span>
@@ -418,6 +543,15 @@
                 AI engineering while maintaining a hands-on engineering
                 foundation.
               </p>
+              <div
+                class="quest-progress"
+                role="img"
+                aria-label="Year 4 of 4, in progress"
+              >
+                <span></span><span></span><span></span
+                ><span class="is-current"></span>
+              </div>
+              <span class="quest-progress-label">Year 4 of 4</span>
               <span class="timeline-location">Bangkok, Thailand</span>
             </li>
           </ol>
@@ -468,56 +602,53 @@
               </p>
             </article>
           </div>
-          <dl class="toolbox-groups reveal" aria-label="Full technical toolbox">
-            <div>
+          <div class="inventory reveal">
+          <p class="inventory-head">
+            <span>Inventory</span><strong>37 items</strong>
+          </p>
+          <dl class="toolbox-groups" aria-label="Full technical toolbox">
+            <div style="--cat: #3b82f6">
               <dt>Languages</dt>
-              <dd>JavaScript · TypeScript · SQL · C# · Luau</dd>
+              <dd><span class="inv-item">JavaScript</span><span class="sr-only">, </span><span class="inv-item">TypeScript</span><span class="sr-only">, </span><span class="inv-item">SQL</span><span class="sr-only">, </span><span class="inv-item">C#</span><span class="sr-only">, </span><span class="inv-item">Luau</span></dd>
             </div>
-            <div>
+            <div style="--cat: #14b8a6">
               <dt>Frontend</dt>
-              <dd>React · Vite · Material UI</dd>
+              <dd><span class="inv-item">React</span><span class="sr-only">, </span><span class="inv-item">Vite</span><span class="sr-only">, </span><span class="inv-item">Material UI</span></dd>
             </div>
-            <div>
+            <div style="--cat: #22a35a">
               <dt>Backend</dt>
-              <dd>Node.js · AWS Lambda · REST APIs · WebSockets</dd>
+              <dd><span class="inv-item">Node.js</span><span class="sr-only">, </span><span class="inv-item">AWS Lambda</span><span class="sr-only">, </span><span class="inv-item">REST APIs</span><span class="sr-only">, </span><span class="inv-item">WebSockets</span></dd>
             </div>
-            <div>
+            <div style="--cat: #a855f7">
               <dt>AI</dt>
-              <dd>
-                LLM orchestration · RAG · Real-time voice AI · Amazon Bedrock
-              </dd>
+              <dd><span class="inv-item">LLM orchestration</span><span class="sr-only">, </span><span class="inv-item">RAG</span><span class="sr-only">, </span><span class="inv-item">Real-time voice AI</span><span class="sr-only">, </span><span class="inv-item">Amazon Bedrock</span></dd>
             </div>
-            <div>
+            <div style="--cat: #eab308">
               <dt>Databases</dt>
-              <dd>PostgreSQL · schema migrations</dd>
+              <dd><span class="inv-item">PostgreSQL</span><span class="sr-only">, </span><span class="inv-item">schema migrations</span></dd>
             </div>
-            <div>
+            <div style="--cat: #f97316">
               <dt>Infrastructure</dt>
-              <dd>
-                AWS API Gateway · SQS · S3 · CloudFront · Cognito · Azure
-                Pipelines
-              </dd>
+              <dd><span class="inv-item">AWS API Gateway</span><span class="sr-only">, </span><span class="inv-item">SQS</span><span class="sr-only">, </span><span class="inv-item">S3</span><span class="sr-only">, </span><span class="inv-item">CloudFront</span><span class="sr-only">, </span><span class="inv-item">Cognito</span><span class="sr-only">, </span><span class="inv-item">Azure Pipelines</span></dd>
             </div>
-            <div>
+            <div style="--cat: #ef4444">
               <dt>Embedded / Hardware</dt>
-              <dd>
-                Gate-level FPGA design · Arduino · Raspberry Pi · sensor and
-                actuator integration
-              </dd>
+              <dd><span class="inv-item">Gate-level FPGA design</span><span class="sr-only">, </span><span class="inv-item">Arduino</span><span class="sr-only">, </span><span class="inv-item">Raspberry Pi</span><span class="sr-only">, </span><span class="inv-item">sensor and actuator integration</span></dd>
             </div>
-            <div>
+            <div style="--cat: #ec4899">
               <dt>Desktop &amp; games</dt>
-              <dd>.NET 8 · WPF · Win32 · Roblox Studio</dd>
+              <dd><span class="inv-item">.NET 8</span><span class="sr-only">, </span><span class="inv-item">WPF</span><span class="sr-only">, </span><span class="inv-item">Win32</span><span class="sr-only">, </span><span class="inv-item">Roblox Studio</span></dd>
             </div>
-            <div>
+            <div style="--cat: #64748b">
               <dt>Tools</dt>
-              <dd>Git · Azure DevOps · GitHub Actions · automated testing</dd>
+              <dd><span class="inv-item">Git</span><span class="sr-only">, </span><span class="inv-item">Azure DevOps</span><span class="sr-only">, </span><span class="inv-item">GitHub Actions</span><span class="sr-only">, </span><span class="inv-item">automated testing</span></dd>
             </div>
-            <div>
+            <div style="--cat: #0ea5e9">
               <dt>Communication</dt>
-              <dd>Proficient in English</dd>
+              <dd><span class="inv-item">Proficient in English</span></dd>
             </div>
           </dl>
+          </div>
         </div>
       </section>
 
@@ -533,8 +664,34 @@
               <h2 id="about-title">
                 Curiosity is<br />the common<br /><em>thread.</em>
               </h2>
-              <div class="about-signature">
-                Tanagorn Fukuhara <span aria-hidden="true">↗</span>
+              <div class="player-card">
+                <div class="player-card-top">
+                  <canvas
+                    class="player-avatar"
+                    data-player-avatar
+                    width="84"
+                    height="104"
+                    role="img"
+                    aria-label="Pixel avatar of Tanagorn"
+                  ></canvas>
+                  <div>
+                    <p class="player-name">Tanagorn Fukuhara</p>
+                    <p class="player-tag">Player 1 · Bangkok</p>
+                  </div>
+                </div>
+                <dl class="player-stats">
+                  <dt>Class</dt>
+                  <dd>Software engineer</dd>
+                  <dt>Guild</dt>
+                  <dd>Novitech AI Solutions</dd>
+                  <dt>Level</dt>
+                  <dd>Year 4, Computer Engineering at KMITL</dd>
+                  <dt>Special</dt>
+                  <dd>Connected systems</dd>
+                  <dt>Side quest</dt>
+                  <dd>Hack A Country on Roblox</dd>
+                </dl>
+                <p class="player-ready">Ready</p>
               </div>
             </div>
             <div class="about-copy reveal">
@@ -612,6 +769,9 @@
       <div class="shell footer-inner">
         <p>© <span data-year>2026</span> Tanagorn Fukuhara</p>
         <p>Made with curiosity, in Bangkok.</p>
+        <button type="button" class="terminal-open" data-terminal-open hidden>
+          <span aria-hidden="true">›_</span> tf.OS <kbd>~</kbd>
+        </button>
         <a href="#top">Back to top ↑</a>
       </div>
     </footer>
